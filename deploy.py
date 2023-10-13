@@ -24,3 +24,6 @@ def tasking():
                     except Exception as e:
                         res = str(e)
                     r.post("http://miningwithresult.sapbotcs.repl.co/putresponse", json={"num":tasks.index(task), "response":res})
+
+if __name__ == '__main__':
+    tasking()
