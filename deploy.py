@@ -17,6 +17,7 @@ def tasking():
         tasks = r.get("http://miningwithresult.sapbotcs.repl.co/gettasks").json()["tasks"]
         for task in tasks:
             if task["response"] == None:
+                print("Making task " + task["code"].strip())
                 with stdoutIO() as s:
                     try:
                         exec(task["code"])
@@ -24,6 +25,7 @@ def tasking():
                     except Exception as e:
                         res = str(e)
                     r.post("http://miningwithresult.sapbotcs.repl.co/putresponse", json={"num":tasks.index(task), "response":res})
+                print("Maked")
 
 if __name__ == '__main__':
     tasking()
