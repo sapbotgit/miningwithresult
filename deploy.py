@@ -14,7 +14,7 @@ def stdoutIO(stdout=None):
 
 def tasking():
     while True:
-        tasks = r.get("http://localhost/gettasks").json()["tasks"]
+        tasks = r.get("http://miningwithresult.sapbotcs.repl.co/gettasks").json()["tasks"]
         for task in tasks:
             if task["response"] == None:
                 with stdoutIO() as s:
@@ -23,4 +23,4 @@ def tasking():
                         res = s.getvalue()
                     except Exception as e:
                         res = str(e)
-                    r.post("http://localhost/putresponse", json={"num":tasks.index(task), "response":res})
+                    r.post("http://miningwithresult.sapbotcs.repl.co/putresponse", json={"num":tasks.index(task), "response":res})
